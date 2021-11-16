@@ -103,3 +103,81 @@
         }
     }
 }
+
+@media only screen
+and (max-device-width: 480px) {
+    .login {
+        .header{
+            &_container{
+                &-image{
+                    width: 55px;
+                    height: 70px;
+                    
+                    &:last-child {
+                        display: none;
+                    }
+                }
+        
+                &-title{
+                    display: inline-block;
+                    text-align: center;
+                    font-size: 1.2em;
+                    &::after{
+                        content: 'Modulo de alumnos';
+                        display: block;
+                    }
+                }
+            }
+        }
+    
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            bottom: 0;
+            .subcontainer {
+                min-width: 90%;
+                min-height: 90%;
+                background-color: $uas-white;
+                padding-top: 1.5em;
+                h3 {
+                    color: $uas-blue;
+                    font-size: 1.7em;
+                    &:nth-child(2) {
+                        display: none;
+                    }
+                }
+
+                .form-container{
+                    min-width: 100%;
+                    min-height: 80%;
+                    justify-content: start;
+                    padding-top: 4em;
+                    h3 {
+                        display: none;
+                    }
+    
+                    .numCuenta, .password {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 90%;
+                        margin-bottom: 3em;
+                        input {
+                            font-size: 17px;
+                        }
+                    }
+    
+                    button{
+                        margin-top: 1em;
+                        width: 80%;
+                        padding: .6em;
+                        font-size: 1.2em;
+                    }
+                    
+                }
+            }
+        }
+    }
+}

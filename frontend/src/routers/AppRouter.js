@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
-import { LoginScreen } from '../components/auth/LoginScreen';
-import { HomeScreen } from '../components/HomeScreen';
+import { HomeScreen } from '../pages/HomeScreen';
+import { LoginScreen } from '../pages/LoginScreen';
 
 const value = false;
 
