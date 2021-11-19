@@ -1,181 +1,207 @@
 .login {
-    .header{
-        &_container{
-            align-items: center;
-            background-color: $uas-gold;
-            display: flex;
-            height: 12vh;
-            justify-content: space-evenly;
-            color: $uas-white;
-            
-            &-image{
-                width: 70px;
-                height: 75px;
-    
-                &:last-child {
-                    width: 100px;
-                    height: 70px;
-                }
+    height: inherit;
+
+    .header {
+        align-items: center;
+        background-color: $uas-gold;
+        display: flex;
+        justify-content: space-around;
+        min-height: 12%;
+
+        &__title {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            // -webkit-text-stroke: 0.3px $uas-white;
+            &::after {
+                content: 'Modulo de alumnos';
+                display: block;
             }
-    
-            &-title{
-                font-size: 2em;
-                font-weight: bold;
-                color: #000000;
-                text-shadow: 1.5px 1.5px white;
+        }  
+
+        &__img {
+            height: 60px;
+            width: 50px;
+            &:last-child {
+                display: none;
             }
         }
     }
 
-    .container {
-        background-color: $uas-blue;
-        height: 88vh;
-        display: flex;
+    .main {
         align-items: center;
+        background-color: $uas-blue;
+        display: flex;
+        flex-direction: column;
+        height: 88%;
         justify-content: center;
+        min-height: 88%;
 
-        .subcontainer {
-            display: flex;
-            border-radius: 15px;
-            flex-direction: column;
-            justify-content: space-evenly;
+        .container {
             align-items: center;
-            background-color: rgba($color: $uas-white, $alpha: .79);
-            width: 40%;
-            height: 90%;
-            
-            h3 {
+            background-color: $uas-white;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            height: 85%;
+            width: 90%;
+
+            &__title {
+                color: $uas-blue;
                 text-align: center;
                 font-size: 1.5em;
-                &:nth-child(2) {
-                    font-size: 1.2em;
-                }
+                font-weight: bold;
+                margin: 1em 0em 0em 0em;
+                letter-spacing: 1px;
+                line-height: 1.5em;
             }
 
-            .form-container{
-                background-color: $uas-white;
-                height: 70%;
-                width: 65%;    
-                border-radius: 15px;
+            &__subtitle {
+                display: none;
+            }
+
+            .form {
+                align-items: center;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: space-evenly;
+                height: 70%;
+                width: 100%;
 
-                .numCuenta, .password {
-                    border-bottom: 1px solid black;
-                    position: relative;
-                    input {
-                        border: none;
+                &__title {
+                    display: none;
+                }
+
+                &__submit {
+                    background-color: $uas-gold;
+                    border: none;
+                    border-radius: 5px;
+                    color: $uas-blue;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    margin-top: 1.5em;
+                    padding: 10px;
+                    width: 80%;
+                }
+
+                .numCuenta, .nip {
+                    align-items: center;
+                    border-bottom: 1px solid rgb(212, 212, 212);
+                    display: flex;
+                    justify-content: center;
+                    width: 90%;
+                    
+                    &__input {
                         font-size: 1.2em;
-                        padding: 10px 8px;
-                        background-color: transparent;
+                        width: 100%;
+                        border: none;
+                        height: 2em;
+
                         &:focus {
                             outline: none;
                         }
                     }
-
-                    i {
-                        color: black;
-                        margin-right: 10px;
-                    }
                 }
 
-
-                button{
-                    border: none;
-                    border-radius: 5px;
-                    background-color: $uas-gold;
-                    padding: 7px;
-                    width: 38%;
-                    font-size: 1.1em;
-                    font-weight: bold;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: darken($color: $uas-blue, $amount: 0);
-                        color: $uas-white;
-                        outline: 3px solid $uas-gold;
-                    }
+                .numCuenta {
+                    margin: 4em 2em 2em 2em;
                 }
-                
+
+                .nip {
+                    margin: 1em 2em 2em 2em;
+                }
             }
         }
     }
 }
 
-@media only screen
-and (max-device-width: 480px) {
-    .login {
-        .header{
-            &_container{
-                &-image{
-                    width: 55px;
-                    height: 70px;
-                    
-                    &:last-child {
-                        display: none;
-                    }
+.fix {
+    height: calc(100% + 200px);
+}
+
+
+@media only screen  and (min-width : 1224px) {
+    .login {    
+        .header {
+            justify-content: center;
+    
+            &__title {
+                font-size: 2.5em;
+                color: $uas-blue;
+                padding: 0em 1.5em;
+                &::after {
+                    content: 'Modulo de alumnos';
+                    display: none;
                 }
-        
-                &-title{
-                    display: inline-block;
-                    text-align: center;
-                    font-size: 1.2em;
-                    &::after{
-                        content: 'Modulo de alumnos';
-                        display: block;
-                    }
+            }  
+    
+            &__img {
+                height: 70px;
+                width: 60px;
+                &:last-child {
+                    display: block;
+                    width: 90px;
                 }
             }
         }
     
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            bottom: 0;
-            .subcontainer {
-                min-width: 90%;
-                min-height: 90%;
-                background-color: $uas-white;
-                padding-top: 1.5em;
-                h3 {
-                    color: $uas-blue;
-                    font-size: 1.7em;
-                    &:nth-child(2) {
-                        display: none;
-                    }
+        .main {
+            .container {
+                align-items: center;
+                background-color: rgba($color: $uas-white, $alpha: .67);
+                height: 90%;
+                width: 40%;
+    
+                &__title {
+                    color: black;
+                    font-size: 1.8em;
+                    letter-spacing: 0px;
+                    line-height: 1em;
+                    letter-spacing: 2px;
+                    margin-top: 1.2em;
                 }
-
-                .form-container{
-                    min-width: 100%;
-                    min-height: 80%;
-                    justify-content: start;
-                    padding-top: 4em;
-                    h3 {
-                        display: none;
-                    }
+                
+                &__subtitle {
+                    display: block;
+                    font-size: 1.3em;
+                    letter-spacing: 1px;
+                    line-height: 1em;
+                    margin-top: 1.3em;
+                    margin-bottom: 1.6em;
+                }
     
-                    .numCuenta, .password {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        width: 90%;
-                        margin-bottom: 3em;
-                        input {
-                            font-size: 17px;
-                        }
-                    }
+                .form {
+                    background-color: $uas-white;
+                    border-radius: inherit;
+                    width: 70%;
+                    height: 68%;
     
-                    button{
+                    &__title {
+                        display: block;
+                        font-size: 2em;
+                        font-weight: bold;
                         margin-top: 1em;
-                        width: 80%;
-                        padding: .6em;
-                        font-size: 1.2em;
                     }
-                    
+    
+                    &__submit {
+                        width: 50%;
+                    }
+    
+                    .numCuenta, .nip {
+                        align-items: center;
+                        border-bottom: 1px solid black;
+                        display: flex;
+                        justify-content: center;
+                        padding: 2px 10px;
+                        width: 70%;                       
+                    }
+    
+                    .numCuenta {
+                        margin: 4em 2em 2em 2em;
+                    }
+    
+                    .nip {
+                        margin: 1em 2em 2em 2em;
+                    }
                 }
             }
         }

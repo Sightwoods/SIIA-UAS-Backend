@@ -1,31 +1,72 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import { image } from "../helpers/image";
 
+const isMobile = () => {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 export const LoginScreen = () => {
+    const login = useRef(null);
+
+    const resize = (e) => {
+        if ( isMobile() ){
+            if ( !login.current.classList.contains('fix') ){
+                login.current.classList.add('fix');
+            }
+        }
+    }
+
+    const originalSize = () => {
+        if ( isMobile() ){
+            if ( login.current.classList.contains('fix') ){
+                login.current.classList.remove('fix');
+            }
+        }
+    }
+
+    useEffect(() => {
+        
+    }, [])
+
     return (
-       <div className="login">
+       <div className="login" ref={login}>
             <header className="header">
-                <div className="header_container">
-                    <img className="header_container-image" src={image('./UAS.png').default} alt="Logo - UAS" />
-                    <h3 className="header_container-title">Universidad Autonóma de Sinaloa</h3>
-                    <img className="header_container-image" src={image('./VISION.png').default} alt="Logo - UAS" />
-                </div>
+                <img className="header__img" src={image('./UAS.png').default} alt="Logo - UAS" />
+                <h3 className="header__title">Universidad Autonóma de Sinaloa</h3>
+                <img className="header__img" src={image('./VISION.png').default} alt="Logo - UAS" />
             </header>
-            <main className="container">
-                <div className="subcontainer">
-                    <h3>Sistema Integral de<br/>Información Administrativa</h3>
-                    <h3>Modulo de servicios a los alumnos</h3>
-                    <form className="form-container">
-                        <h3>Inicio de sesión</h3>
+            <main className="main">
+                <div className="container">
+                    <h3 className="container__title">Sistema Integral de<br/>Información Administrativa</h3>
+                    <h3 className="container__subtitle">Modulo de servicios a los alumnos</h3>
+                    <form className="form">
+                        <h3 className="form__title">Inicio de sesión</h3>
                         <div className="numCuenta">
-                            <input type="text" placeholder="Número de cuenta"/>
-                            <i className="fas fa-user-graduate fa-lg"></i>
+                            <input 
+                                className="numCuenta__input"
+                                type="text"
+                                placeholder="Número de cuenta"
+                                onFocus={resize}
+                                onBlur={originalSize}
+                            />
+                            <i className="numCuenta__icon fas fa-user-graduate fa-lg"></i>
                         </div>
-                        <div className="password">
-                            <input type="password" placeholder="NIP"/>
-                            <i className="fas fa-lock fa-lg"></i>
+                        <div className="nip">
+                            <input 
+                                className="nip__input"
+                                type="password" pattern="[0-9]*"
+                                inputMode="numeric" placeholder="NIP"
+                                onFocus={resize}
+                                onBlur={originalSize}
+                            />
+                            <i className="nip__icon fas fa-lock fa-lg"></i>
                         </div>
-                        <button type="summit">Iniciar</button>
+                        <button className="form__submit" type="summit">Acceder</button>
                     </form>
                 </div>
             </main>
