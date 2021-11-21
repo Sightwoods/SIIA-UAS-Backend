@@ -6,7 +6,7 @@ import { PublicRoute } from './PublicRoute';
 import { HomeScreen } from '../pages/HomeScreen';
 import { LoginScreen } from '../pages/LoginScreen';
 
-const value = false;
+const value = true;
 
 export const AppRouter = () => {
     return (

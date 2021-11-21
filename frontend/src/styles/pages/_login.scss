@@ -1,208 +1,107 @@
 .login {
-    height: inherit;
-
-    .header {
-        align-items: center;
-        background-color: $uas-gold;
-        display: flex;
-        justify-content: space-around;
-        min-height: 12%;
-
-        &__title {
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            // -webkit-text-stroke: 0.3px $uas-white;
-            &::after {
-                content: 'Modulo de alumnos';
-                display: block;
+    .logo {
+        img {
+            &:first-child {
+                height: 7rem;
+                width: 6rem;
             }
-        }  
-
-        &__img {
-            height: 60px;
-            width: 50px;
+            
             &:last-child {
-                display: none;
+                height: 6rem;
+                width: 7.5rem;
             }
         }
     }
+    .title {
+        font-size: 2.5rem;
+    }
 
-    .main {
-        align-items: center;
-        background-color: $uas-blue;
-        display: flex;
-        flex-direction: column;
-        height: 88%;
-        justify-content: center;
-        min-height: 88%;
+    .numCuenta, .nip {
+        border-bottom: 1px solid $primary;
+        margin-top: 50px;
 
-        .container {
+        &__input {
             align-items: center;
-            background-color: $uas-white;
-            border-radius: 15px;
             display: flex;
-            flex-direction: column;
-            height: 85%;
-            width: 90%;
+            justify-content: center;
+        }
 
-            &__title {
-                color: $uas-blue;
-                text-align: center;
-                font-size: 1.5em;
-                font-weight: bold;
-                margin: 1em 0em 0em 0em;
-                letter-spacing: 1px;
-                line-height: 1.5em;
-            }
+        .form-control {
+            font-size: 1.1rem;
+            min-height: 1rem;
+            line-height: initial;
+        }
+        .form-control:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+    
+    .btn {
+        min-height: 3.125rem;
+        font-weight: 600;
+        background-color: $uas-gold;
+        border-color: $uas-gold;
+    
+        &:hover {
+            outline: 5px solid $uas-blue;
+        }
+    }
+}
 
-            &__subtitle {
-                display: none;
-            }
+@media only screen  and (max-width : 990px) {
+    .login {
+        background: url('../../assets/images/img-1.png');
+        background-size: cover;
+        background-position: center;
+        color: $uas-white;
 
-            .form {
+        .title {
+            font-size: 2.1rem;
+        }
+
+        .logo {
+            justify-content: center !important;
+        }
+
+        &__form {
+            background-color: rgba($color: $uas-blue, $alpha: 0.5);
+        }
+
+        .numCuenta, .nip {
+            border-bottom: 1px solid $uas-white;
+            margin-top: 50px;
+    
+            &__input {
                 align-items: center;
                 display: flex;
-                flex-direction: column;
-                height: 70%;
-                width: 100%;
+                justify-content: center;
+            }
+    
+            .form-control {
+                background-color: transparent;
+                color: $uas-white;
+                padding-left: 0px;
+                padding-right: 0px;
 
-                &__title {
-                    display: none;
-                }
-
-                &__submit {
-                    background-color: $uas-gold;
-                    border: none;
-                    border-radius: 5px;
-                    color: $uas-blue;
-                    font-size: 1.2em;
-                    font-weight: bold;
-                    margin-top: 1.5em;
-                    padding: 10px;
-                    width: 80%;
-                }
-
-                .numCuenta, .nip {
-                    align-items: center;
-                    border-bottom: 1px solid rgb(212, 212, 212);
-                    display: flex;
-                    justify-content: center;
-                    width: 90%;
-                    
-                    &__input {
-                        font-size: 1.2em;
-                        width: 100%;
-                        border: none;
-                        height: 2em;
-
-                        &:focus {
-                            outline: none;
-                        }
-                    }
-                }
-
-                .numCuenta {
-                    margin: 4em 2em 2em 2em;
-                }
-
-                .nip {
-                    margin: 1em 2em 2em 2em;
+                &::placeholder{
+                    color: darken($color: $uas-white, $amount: 10);
                 }
             }
-        }
-    }
-}
-
-.fix {
-    height: calc(100% + 200px);
-}
-
-
-@media only screen  and (min-width : 1224px) {
-    .login {    
-        .header {
-            justify-content: center;
-    
-            &__title {
-                font-size: 2.5em;
-                color: $uas-blue;
-                padding: 0em 1.5em;
-                &::after {
-                    content: 'Modulo de alumnos';
-                    display: none;
-                }
-            }  
-    
-            &__img {
-                height: 70px;
-                width: 60px;
-                &:last-child {
-                    display: block;
-                    width: 90px;
-                }
+            .form-control:focus {
+                outline: none;
+                box-shadow: none;
             }
+
         }
-    
-        .main {
-            .container {
-                align-items: center;
-                background-color: rgba($color: $uas-white, $alpha: .67);
-                height: 90%;
-                width: 40%;
-    
-                &__title {
-                    color: black;
-                    font-size: 1.8em;
-                    letter-spacing: 0px;
-                    line-height: 1em;
-                    letter-spacing: 2px;
-                    margin-top: 1.2em;
-                }
-                
-                &__subtitle {
-                    display: block;
-                    font-size: 1.3em;
-                    letter-spacing: 1px;
-                    line-height: 1em;
-                    margin-top: 1.3em;
-                    margin-bottom: 1.6em;
-                }
-    
-                .form {
-                    background-color: $uas-white;
-                    border-radius: inherit;
-                    width: 70%;
-                    height: 68%;
-    
-                    &__title {
-                        display: block;
-                        font-size: 2em;
-                        font-weight: bold;
-                        margin-top: 1em;
-                    }
-    
-                    &__submit {
-                        width: 50%;
-                    }
-    
-                    .numCuenta, .nip {
-                        align-items: center;
-                        border-bottom: 1px solid black;
-                        display: flex;
-                        justify-content: center;
-                        padding: 2px 10px;
-                        width: 70%;                       
-                    }
-    
-                    .numCuenta {
-                        margin: 4em 2em 2em 2em;
-                    }
-    
-                    .nip {
-                        margin: 1em 2em 2em 2em;
-                    }
-                }
+        .btn {
+            min-height: 2.8rem;
+            font-size: 1rem;
+
+            &:hover{
+                outline: none;
+                box-shadow: none;
+                background-color: darken($uas-gold, 10);
             }
         }
     }
