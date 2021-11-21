@@ -5,7 +5,7 @@
 **Paso #1** - Activar el entorno virtual
 
 ```bash
-$ # Instalacion de modulos de entorno virtual  (Linux)
+$ # Instalacion de modulos de entorno virtual (Linux)
 $ source api-env/bin/activate
 ```
 
