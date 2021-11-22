@@ -1,0 +1,32 @@
+
+.header{
+    background-color: $uas-gold;
+
+    .logo {
+        height: 80px;
+        
+        &:last-child {
+            height: 75px;
+            width: 90px;
+        }
+    }
+
+    button {
+        background-color: $uas-blue;
+        font-size: 16px;
+        height: 40px;
+        border-color: $uas-blue;
+        &:hover, &:focus {
+            background-color: darken($color: $uas-blue, $amount: 10);
+        }
+        img{
+            height: 35px;
+            width: 35px;
+            padding: 5px;
+        }
+    }
+    nav{
+        justify-content: space-between;
+    }
+}
+

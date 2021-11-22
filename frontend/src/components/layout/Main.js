@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Main = (props) => {
     return (
-        <main>
+        <main className="container">
             { props.children }
         </main>
     )

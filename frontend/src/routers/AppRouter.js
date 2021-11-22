@@ -5,6 +5,7 @@ import { PublicRoute } from './PublicRoute';
 
 import { HomeScreen } from '../pages/HomeScreen';
 import { LoginScreen } from '../pages/LoginScreen';
+import { HomeRouter } from './HomeRouter';
 
 const value = true;
 
@@ -16,7 +17,7 @@ export const AppRouter = () => {
                     path="/"
                     element={
                         <PrivateRoute isAuthenticated={value}>
-                            <HomeScreen /> 
+                            <HomeRouter />
                         </PrivateRoute>
                     }
                 />
