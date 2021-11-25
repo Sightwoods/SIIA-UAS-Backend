@@ -1,0 +1,31 @@
+
+.header{
+    background-color: $uas-blue2;
+    text-align: center;
+    
+    h2{
+        color: white;
+    }
+    .logo {
+        height: 80px;
+        margin-right: 70px;
+        margin-left: 70px;
+        &:last-child {
+            height: 75px;
+            width: 90px;
+        }
+    }
+    nav{
+        color: white;
+        display: flex;
+        .btn{
+            color: white;
+            :hover{
+                outline-style: none;
+            }
+        }
+        i{
+            display: block;
+        }
+    }
+}
