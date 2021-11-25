@@ -1,32 +1,31 @@
 
 .header{
-    background-color: $uas-gold;
-
+    background-color: $uas-blue2;
+    text-align: center;
+    
+    h2{
+        color: white;
+    }
     .logo {
         height: 80px;
-        
+        margin-right: 70px;
+        margin-left: 70px;
         &:last-child {
             height: 75px;
             width: 90px;
         }
     }
-
-    button {
-        background-color: $uas-blue;
-        font-size: 16px;
-        height: 40px;
-        border-color: $uas-blue;
-        &:hover, &:focus {
-            background-color: darken($color: $uas-blue, $amount: 10);
-        }
-        img{
-            height: 35px;
-            width: 35px;
-            padding: 5px;
-        }
-    }
     nav{
-        justify-content: space-between;
+        color: white;
+        display: flex;
+        .btn{
+            color: white;
+            :hover{
+                outline-style: none;
+            }
+        }
+        i{
+            display: block;
+        }
     }
 }
-

@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
-import { HomeScreen } from '../pages/HomeScreen';
 import { LoginScreen } from '../pages/LoginScreen';
 import { HomeRouter } from './HomeRouter';
 
