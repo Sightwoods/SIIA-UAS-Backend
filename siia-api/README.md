@@ -15,6 +15,12 @@ $ # Activación de entorno virtual (Linux)
 $ source env/bin/activate
 ```
 
+```bash
+$ # Activación de entorno virtual (Windows)
+$ env\Scripts\activate
+$ # En caso de que no te deje activar el entorno por falta de permisos usar el comando Set-ExecutionPolicy Unrestricted para poder ejecutar el comando
+```
+
 **Paso #3** - Instalar dependencias en el entorno virtual en caso de que no esten instaladas
 
 ```bash
