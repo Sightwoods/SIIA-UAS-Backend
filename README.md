@@ -43,6 +43,7 @@ $ set FLASK_ENV=development
 ```
 
 **Paso #5** - Inizializar la base de datos si no ha sido inizializada
+
 **Deben tener instalado Postgresql y haber creado la base de datos de acuerdo a la configuración o cambien los parametros en api/config**
 ```bash
 $ flask shell
