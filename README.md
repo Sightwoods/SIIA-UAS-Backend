@@ -1,4 +1,4 @@
-# Siia-Api
+# SIIA-UAS RESTful API
 
 ## Como usar la api
 
@@ -30,19 +30,27 @@ $ pip install -r requirements.txt
 ```
 
 **Paso #4** - Configurar `flask` para la api
+Para entornos Linux
 ```bash
 $ export FLASK_APP=wsgi.py
 $ export FLASK_ENV=development
 ```
 
+Para Windows
+```bash
+$ set FLASK_APP=wsgi.py
+$ set FLASK_ENV=development
+```
+
 **Paso #5** - Inizializar la base de datos si no ha sido inizializada
+**Deben tener instalado Postgresql y haber creado la base de datos de acuerdo a la configuración o cambien los parametros en api/config**
 ```bash
 $ flask shell
 >>> from api import db
 >>> db.create_all()
 ```
 
-**Paso #6** - Ejecutar el programa de la api en un servidor local `localhost:5000` o elige la IP
+**Paso #6** - Ejecutar el programa de la api en un servidor local `localhost:5000` o elige la IP - e.g: `192.168.1.20`
 ```bash
 $ python run.py
 ```
