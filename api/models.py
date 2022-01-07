@@ -1,13 +1,14 @@
 from datetime import datetime
 
 import json
+import sys
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
+
 db = SQLAlchemy()
     
-
 class JWTTokenBlocklist(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     jwt_token = db.Column(db.String(), nullable=False)
@@ -93,7 +94,7 @@ class Student(db.Model):
         q_param = {'account': _account_number, 'nip': _nip}
         for i in db.session.execute('select * from students where account_number = :account and nip = :nip', params=q_param):
             a = i
-        return True if a else False
+            return True if a else False
 
     def update_nip(self, _new_nip):
         self.nip = _new_nip
@@ -104,6 +105,7 @@ class Student(db.Model):
     def set_jwt_auth_active(self, set_status):
         self.jwt_auth_active = set_status
 
+    @classmethod
     def folio_query(self, _account_number):
         def json(i):
             return {
@@ -116,9 +118,10 @@ class Student(db.Model):
         q_param = {'account': _account_number}
         return [json(data) for data in db.session.execute("SELECT * FROM ConsultaFolios(:account)", params=q_param)][0]
     
+    @classmethod
     def academic_record(self, _account_number):
         def json(i):
-            print(i)
+            print(i, file=sys.stdout)
             return {
                 'school_subject': i.school_subject,
                 'grade': i.grade,
@@ -126,8 +129,81 @@ class Student(db.Model):
                 'test_date': i.test_date.strftime('%Y/%m/%d')
             }
         q_param = {'account': _account_number}
-        return [json(data) for data in db.session.execute("SELECT * FROM HistorialAcademico(:account)", params=q_param)][0]
+        objeto = []
+        for data in db.session.execute("SELECT * FROM HistorialAcademico(:account)", params=q_param):
+            objeto.append(json(data))
+        return objeto
+
+    @classmethod
+    def schedule(self, _account_number):
+        def json(i):
+            return {
+                'subject': i.name,
+                'teacher': i.teacher,
+                'days': {
+                    'day': i.day,
+                    'schedule': i.schedule.strftime('%H:%M')
+                }
+            }
+        q_param = {'account': _account_number}
+        objeto = []
+        for data in db.session.execute("SELECT * FROM horario(:account)", params=q_param):
+            objeto.append(json(data))
+        return objeto
     
+    @classmethod
+    def student_data(self, _account_number):
+        def json(i):
+            return {
+                'account': i.account_number,
+                'sex': i.sex,
+                'birthday': i.birthday.strftime('%d/%m/%Y'),
+                'city': i.city,
+                'street': i.street,
+                'suburb': i.suburb,
+                'postal_code': i.postal_code,
+                'curp': i.curp,
+                'nss': i.nss,
+                'admission_date': i.admission_date.strftime('%d/%m/%Y'),
+            }
+        q_param = {'account': _account_number}
+        objeto = []
+        for data in db.session.execute("SELECT * FROM datosgenerales(:account)", params=q_param):
+            objeto.append(json(data))
+        return objeto
+    
+    @classmethod
+    def parent_data(self, _account_number):
+        def json(i):
+            return {
+                'name': i.name,
+                'phone_number': i.phone_number,
+                'city': i.city,
+                'street': i.street,
+                'suburb': i.suburb,
+                'postal_code': i.postal_code,
+            }
+        q_param = {'account': _account_number}
+        objeto = []
+        for data in db.session.execute("SELECT * FROM datostutor(:account)", params=q_param):
+            objeto.append(json(data))
+        return objeto
+
+    @classmethod
+    def subjects(self, _account_number):
+        def json(i):
+            print(i, file=sys.stdout)
+            return {
+                'subjects': i.school_subject,
+                'plan': i.plan,
+                'group': i.grupo
+            }
+        q_param = {'account': _account_number}
+        objeto = []
+        for data in db.session.execute("SELECT * FROM cargaacademica(:account)", params=q_param):
+            objeto.append(json(data))
+        return objeto
+
     @classmethod
     def get_by_id(cls, id):
         return cls.query.get_or_404(id)
